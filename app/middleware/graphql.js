@@ -4,9 +4,10 @@ const graphqlHTTP = require('koa-graphql');
 
 
 module.exports = (_, app) => {
+  const switchGraphiql = app.config.graphql.graphiql || false;
   const mw = graphqlHTTP({
     schema: app.schema,
-    graphiql: true,
+    graphiql: switchGraphiql,
   });
   const graphQLRouter = app.config.graphql.router;
 
